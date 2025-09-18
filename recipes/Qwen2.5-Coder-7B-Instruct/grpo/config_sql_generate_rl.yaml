@@ -1,5 +1,5 @@
 # Model arguments
-model_name_or_path: Qwen/Qwen2.5-Coder-7B-Instruct
+model_name_or_path: /mnt/cache/tonghao2/data/models/Qwen/Qwen2.5-Coder-3B-Instruct
 #model_name_or_path: XGenerationLab/XiYanSQL-QwenCoder-7B-2502
 model_revision: main
 torch_dtype: bfloat16
@@ -21,6 +21,7 @@ vllm_device: auto
 vllm_max_model_len: 8192
 vllm_gpu_memory_utilization: 0.9
 #vllm_server_host: localhost
+vllm_server_host: 127.0.0.1
 vllm_server_port: 14000
 #do_eval: true
 do_eval: false

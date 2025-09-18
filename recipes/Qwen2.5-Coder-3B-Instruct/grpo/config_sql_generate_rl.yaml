@@ -20,6 +20,7 @@ vllm_device: auto
 vllm_max_model_len: 8192
 vllm_gpu_memory_utilization: 0.9
 #vllm_server_host: localhost
+vllm_server_host: 127.0.0.1
 vllm_server_port: 14000
 #do_eval: true
 do_eval: false

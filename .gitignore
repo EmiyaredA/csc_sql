@@ -7,6 +7,12 @@ __pycache__/
 # C extensions
 *.so
 
+# Data
+work/
+CscSql/
+outputs/
+logs/
+
 # Distribution / packaging
 .Python
 build/
