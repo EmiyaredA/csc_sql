@@ -8,6 +8,7 @@ run_day=$(date "+%Y%m%d_%H%M")
 begin_time=$(date "+%Y_%m_%d_%H_%M_%S")
 echo "run train text2sql begin time = ${begin_time}"
 
+HOME=/mnt/cache/tonghao/slns/dbProject2/csc_sql
 USER_HOME=${HOME}
 echo "user home dir: ${USER_HOME}"
 
@@ -28,10 +29,10 @@ train_log="${LOG_DIR}/run_train_${begin_time}.log"
 train_vllm_log="${LOG_DIR}/run_train_${begin_time}_vllm.log"
 echo "train log file ${train_log}"
 
-export VLLM_USE_MODELSCOPE=True
+# export VLLM_USE_MODELSCOPE=True
 
 #MODEL_PATH="Qwen/Qwen2.5-Coder-7B-Instruct"
-MODEL_PATH="Qwen/Qwen2.5-Coder-3B-Instruct"
+MODEL_PATH="/mnt/cache/tonghao2/data/models/Qwen/Qwen2.5-Coder-3B-Instruct"
 #MODEL_PATH="XGenerationLab/XiYanSQL-QwenCoder-3B-2502"
 #MODEL_PATH="XGenerationLab/XiYanSQL-QwenCoder-7B-2502"
 
@@ -45,5 +46,6 @@ CUDA_VISIBLE_DEVICES=3 trl vllm-serve \
 echo "tail -f ${train_vllm_log}"
 echo "running"
 
+mkdir -p ${WORK_DIR}/bin/nl2sql/
 echo "tail -f ${train_vllm_log}" > ${WORK_DIR}/bin/nl2sql/temp_vllm.log
 echo "run tflog to tail -f log"

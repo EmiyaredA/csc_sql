@@ -3,6 +3,8 @@
 set -v
 set -e
 
+export WANDB_API_KEY=c96a63b4d5316c8577adaaa9d64d9587858a0e83
+
 run_day=$(date "+%Y%m%d_%H%M")
 
 begin_time=$(date "+%Y_%m_%d_%H_%M_%S")

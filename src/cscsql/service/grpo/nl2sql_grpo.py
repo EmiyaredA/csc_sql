@@ -139,6 +139,16 @@ class GRPOScriptArguments(ScriptArguments):
                     "context size, which might be much larger than the KV cache, leading to inefficiencies."
         },
     )
+    
+    vllm_device: str = field(
+        default="auto",
+        metadata={"help": "Device to use for vLLM inference"}
+    )
+    
+    vllm_max_model_len: int = field(
+        default=8192,
+        metadata={"help": "Maximum model length for vLLM"}
+    )
 
 
 def make_prefix1(dp: Dict, template_type='default'):

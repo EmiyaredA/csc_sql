@@ -6,11 +6,15 @@ conda create -n torch_vllm python=3.12
 conda activate torch_vllm
 
 # install vllm
-pip install torch vllm
+# pip install torch vllm
+pip install torch==2.6.0+cu124
+pip install vllm==0.8.5.post1
 
 # install flash-attention
 pip install packaging ninja
+# python -c "import torch; print(torch._C._GLIBCXX_USE_CXX11_ABI)"
 pip install flash-attn --no-build-isolation
+pip install wandb
 
 # install current project
 cd csc_sql

@@ -9,12 +9,12 @@ DATASET_NAME="bird"
 DATASET_BASE_DIR=/mnt/cache/tonghao/slns/dbProject2/csc_sql/work
 
 # for BIRD dev
-DATASET_MODE="dev"
-DATAFILE_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/dev.json"
-DATASET_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/dev_databases"
-TABLES_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/dev_tables.json"
-SAVE_INDEX_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/db_contents_index"
-PROMPT_OUTPUT_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/dev_bird.json"
+# DATASET_MODE="dev"
+# DATAFILE_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/dev.json"
+# DATASET_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/dev_databases"
+# TABLES_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/dev_tables.json"
+# SAVE_INDEX_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/db_contents_index"
+# PROMPT_OUTPUT_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/dev_bird.json"
 
 
 ## for BIRD test
@@ -26,12 +26,12 @@ PROMPT_OUTPUT_PATH="${DATASET_BASE_DIR}/bird/dev_20240627/dev_bird.json"
 #PROMPT_OUTPUT_PATH="${DATASET_BASE_DIR}/bird/test/test_bird.json"
 
 ## for BIRD train
-#DATASET_MODE="train"
-#DATAFILE_PATH="${DATASET_BASE_DIR}/bird/train/train.json"
-#DATASET_PATH="${DATASET_BASE_DIR}/bird/train/train_databases"
-#TABLES_PATH="${DATASET_BASE_DIR}/bird/train/train_tables.json"
-#SAVE_INDEX_PATH="${DATASET_BASE_DIR}/bird/train/db_contents_index"
-#PROMPT_OUTPUT_PATH="${DATASET_BASE_DIR}/bird/train/train_bird.json"
+DATASET_MODE="train"
+DATAFILE_PATH="${DATASET_BASE_DIR}/bird/train/train_enhanced_with_cot.json"
+DATASET_PATH="${DATASET_BASE_DIR}/bird/train/train_databases"
+TABLES_PATH="${DATASET_BASE_DIR}/bird/train/train_tables.json"
+SAVE_INDEX_PATH="${DATASET_BASE_DIR}/bird/train/db_contents_index"
+PROMPT_OUTPUT_PATH="${DATASET_BASE_DIR}/bird/train/train_bird.json"
 
 
 python -m cscsql.service.process.process_dataset \

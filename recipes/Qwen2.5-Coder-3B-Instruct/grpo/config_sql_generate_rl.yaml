@@ -1,5 +1,5 @@
 # Model arguments
-model_name_or_path: Qwen/Qwen2.5-Coder-3B-Instruct
+model_name_or_path: /mnt/cache/tonghao2/data/models/Qwen/Qwen2.5-Coder-3B-Instruct
 #model_name_or_path: XGenerationLab/XiYanSQL-QwenCoder-3B-2502
 model_revision: main
 torch_dtype: bfloat16
@@ -7,7 +7,7 @@ attn_implementation: flash_attention_2
 
 # Data training arguments
 dataset_name: bird
-dataset_path: ~/work/bird_train/train_sql_generate_omnisql_bird.json
+dataset_path: /mnt/cache/tonghao/slns/dbProject2/csc_sql/work/bird_train/train_sql_generate_omnisql_bird.json
 dataset_test_split: dev
 dataset_config: default
 system_prompt: "You are a helpful AI Assistant that provides well-reasoned and detailed responses. You first think about the reasoning process as an internal monologue and then provide the user with the answer."
