@@ -3,7 +3,7 @@
 set -v
 set -e
 
-export WANDB_API_KEY=c96a63b4d5316c8577adaaa9d64d9587858a0e83
+source .env
 
 run_day=$(date "+%Y%m%d_%H%M")
 
@@ -36,7 +36,7 @@ echo "train log file ${train_log}"
 
 export ACCELERATE_LOG_LEVEL=info
 export TOKENIZERS_PARALLELISM=True
-# export VLLM_USE_MODELSCOPE=True
+export VLLM_USE_MODELSCOPE=True
 export no_proxy="127.0.0.1,localhost,0.0.0.0"
 export NO_PROXY="127.0.0.1,localhost,0.0.0.0"
 

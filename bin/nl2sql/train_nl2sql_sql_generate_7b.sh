@@ -3,13 +3,14 @@
 set -v
 set -e
 
-export WANDB_API_KEY=c96a63b4d5316c8577adaaa9d64d9587858a0e83
+source .env
 
 run_day=$(date "+%Y%m%d_%H%M")
 
 begin_time=$(date "+%Y_%m_%d_%H_%M_%S")
 echo "run train text2sql begin time = ${begin_time}"
 
+HOME=/mnt/cache/tonghao/slns/dbProject2/csc_sql
 USER_HOME=${HOME}
 echo "user home dir: ${USER_HOME}"
 
@@ -36,7 +37,8 @@ echo "train log file ${train_log}"
 export ACCELERATE_LOG_LEVEL=info
 export TOKENIZERS_PARALLELISM=True
 export VLLM_USE_MODELSCOPE=True
-
+export no_proxy="127.0.0.1,localhost,0.0.0.0"
+export NO_PROXY="127.0.0.1,localhost,0.0.0.0"
 
 CUDA_VISIBLE_DEVICES=0,1,2 nohup  accelerate launch \
 --config_file recipes/accelerate_configs/zero2.yaml \
@@ -47,6 +49,7 @@ CUDA_VISIBLE_DEVICES=0,1,2 nohup  accelerate launch \
 echo "tail -f ${train_log}"
 echo "running"
 
+mkdir -p ${WORK_DIR}/bin/nl2sql/
 echo "tail -f ${train_log}" > ${WORK_DIR}/bin/nl2sql/temp.log
 echo "run tflog to tail -f log"
 

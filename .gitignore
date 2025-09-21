@@ -8,10 +8,15 @@ __pycache__/
 *.so
 
 # Data
+*.whl
+.config/
+.nv/
+.triton/
 work/
 CscSql/
 outputs/
 logs/
+wandb/
 
 # Distribution / packaging
 .Python

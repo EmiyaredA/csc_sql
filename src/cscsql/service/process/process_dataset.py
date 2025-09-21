@@ -126,6 +126,10 @@ def build_content_index(db_file_path: str, index_path: str):
 
     with open(temp_content_path, "w") as f:
         f.write(json.dumps(all_column_contents, indent=2, ensure_ascii=True))
+    # {
+    #   "id": "表名-**-列名-**-序号",
+    #   "contents": "实际的字符串内容"
+    # }
 
     os.makedirs(index_path, exist_ok=True)
     # Building a BM25 Index (Direct Java Implementation), see https://github.com/castorini/pyserini/blob/master/docs/usage-index.md
@@ -303,9 +307,13 @@ def obtain_n_grams(sequence, max_n):
     '''
     returns all grams of sequence less than or equal to `max_n`
     '''
+    # 把输入句子分成 token 列表
+    # ["I", "love", "California", "schools"]
     tokens = word_tokenize(sequence)
     all_n_grams = []
     for n in range(1, max_n + 1):
+        # n=2 的 bigram
+        # ngrams(tokens, 2) -> [("I", "love"), ("love", "California"), ("California", "schools")]
         all_n_grams.extend([" ".join(gram) for gram in ngrams(tokens, n)])
 
     return all_n_grams
@@ -657,6 +665,8 @@ if __name__ == "__main__":
             # load db context index searchers
             for db_id in batch_db_ids:
                 db_id2searcher[db_id] = LuceneSearcher(os.path.join(opt.db_content_index_path, db_id))
+                # [1] docid=123, score=7.82
+                # Raw text: {"id": "123", "content": "California high school located in Los Angeles..."}
 
             db_id2queries = dict()
             for data in tqdm(batch_dataset):
@@ -681,8 +691,10 @@ if __name__ == "__main__":
 
         for data in tqdm(batch_dataset):
             new_dataset.append(
-                prepare_input_output_pairs(data, ek_key, db_id2relevant_hits, db_id2sampled_db_values[data["db_id"]],
-                                           db_id2db_info[data["db_id"]], opt.source, output_key, opt.mode)
+                prepare_input_output_pairs(
+                    data, ek_key, db_id2relevant_hits, db_id2sampled_db_values[data["db_id"]],
+                    db_id2db_info[data["db_id"]], opt.source, output_key, opt.mode
+                )
             )
         del db_id2searcher, db_id2relevant_hits,
 
