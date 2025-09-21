@@ -10,7 +10,6 @@ run_day=$(date "+%Y%m%d_%H%M")
 begin_time=$(date "+%Y_%m_%d_%H_%M_%S")
 echo "run train text2sql begin time = ${begin_time}"
 
-HOME=/mnt/cache/tonghao/slns/dbProject2/csc_sql
 USER_HOME=${HOME}
 echo "user home dir: ${USER_HOME}"
 
